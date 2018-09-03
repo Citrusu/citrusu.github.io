@@ -25,16 +25,26 @@
     h3 a{
         z-index: 10;
     }
+    .btn{
+        padding: 10px 25px;
+        border-radius: 3px;
+        background-color: #2196F3;
+        color: #fff;
+        border: none;
+        font-size: 16px;
+    }
 </style>
 <body>
 <div class="tis">
     <h1>屏幕颜色检测工具</h1>
-    <h2>Ver 1.0</h2>
-    <h3>by <a href="http://hicitrus.com">Citrus</a></h3>
-    <p>点击鼠标左键和空格键开始检测</p>
+    <h2>Ver 1.1</h2>
+    <h3>by <a href="http://zyou.top">Citrus</a></h3>
+    <p>点击“立即开始”或者空格键开始检测</p>
+    <p>点击鼠标左键和空格键切换显示</p>
     <p>点击鼠标右键和ESC键退出，触屏长按退出</p>
-    <div id="showBox"></div>
+    <p><button class="btn start-btn">立即开始</button></p>
 </div>
+<div id="showBox"></div>
 <script>
     window.onload = function(){
         init();
@@ -48,6 +58,7 @@
         '#000'
     ];
     function init(){
+        var showBox = document.getElementById('showBox');
         //创建HTML
         function createHtml(){
             var html = '';
@@ -61,7 +72,7 @@
         var len = colors.length;
         var index = 0;
         var html = createHtml();
-        document.getElementById('showBox').innerHTML = html;
+        showBox.innerHTML = html;
 
         //执行
         function changeColor(){
@@ -93,12 +104,16 @@
         /*
         * 触发事件
         * */
+        document.querySelectorAll('.start-btn')[0].addEventListener('click', function(){
+            changeColor();
+        });
+        showBox.addEventListener('click', function(){
+            changeColor();
+        });
         //鼠标点击
         document.onmousedown  = function(e){
             btn = e.button;
-            if(btn == 0){
-                changeColor();
-            }else if(btn == 2){
+            if(btn == 2){
                 defaultStatus();
             }
         };
