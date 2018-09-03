@@ -26,6 +26,7 @@
         z-index: 10;
     }
     .btn{
+        margin-top: 50px;
         padding: 10px 25px;
         border-radius: 3px;
         background-color: #2196F3;
@@ -33,15 +34,22 @@
         border: none;
         font-size: 16px;
     }
+    .top-desc{
+        margin-top: 60px;
+    }
+    .desc{
+        color: #666;
+        font-size: 14px;
+    }
 </style>
 <body>
 <div class="tis">
     <h1>屏幕颜色检测工具</h1>
-    <h2>Ver 1.1</h2>
-    <h3>by <a href="http://zyou.top">Citrus</a></h3>
-    <p>点击“立即开始”或者空格键开始检测</p>
-    <p>点击鼠标左键和空格键切换显示</p>
-    <p>点击鼠标右键和ESC键退出，触屏长按退出</p>
+    <h2 class="desc">By <a href="http://zyou.top">Citrus</a>  Ver 1.1 </h2>
+    <h3></h3>
+    <p class="top-desc">点击“立即开始”或者空格键开始检测</p>
+    <p class="desc">点击鼠标左键和空格键切换显示</p>
+    <p class="desc">点击鼠标右键和ESC键退出，触屏长按退出</p>
     <p><button class="btn start-btn">立即开始</button></p>
 </div>
 <div id="showBox"></div>
@@ -130,7 +138,7 @@
         };
 
         //移动端触屏
-        document.addEventListener('touchstart',function(){
+        showBox.addEventListener('touchstart',function(){
             touchEvent();
         });
 
@@ -142,7 +150,7 @@
             },500);
 
         }
-        document.addEventListener('touchend',function(){
+        showBox.addEventListener('touchend',function(){
             if(time > 1){
                 defaultStatus();
             }else{
